@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap");
+body, html {
+  font-family: 'Smooch Sans', sans-serif;
+  background-color: #A4373D;
+  overflow-x: hidden;
+  padding-left: 5px;
+}
+
+.home-container h1 {
+  color: #E3DFD6;
+  background-color: #000;
+  font-weight: bolder;
+  font-size: 400%;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.home-container h3 {
+  color: #E3DFD6;
+  font-size: 200%;
+  margin-top: 0;
+  padding-left: 10px;
+}
+
+.home-container select, .home-container input {
+  display: block;
+  margin-bottom: 10px;
+  color: #E3DFD6;
+  font-size: 200%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #E3DFD6;
+}
+
+.home-container input::-webkit-input-placeholder {
+  color: #E3DFD6;
+}
+
+.home-container input:-ms-input-placeholder {
+  color: #E3DFD6;
+}
+
+.home-container input::-ms-input-placeholder {
+  color: #E3DFD6;
+}
+
+.home-container input::placeholder {
+  color: #E3DFD6;
+}
+
+.home-container input:focus, .home-container select:focus {
+  outline: none;
+}
+
+.player-card h1 {
+  font-size: 200%;
+}
+
+.player-card h2 {
+  font-size: 200%;
+  color: #E3DFD6;
+  background-color: #000;
+  padding-left: 10px;
+}
+
+.player-card ul {
+  margin-left: -40px;
+}
+
+.player-card li {
+  list-style: none;
+  font-size: 150%;
+  color: #E3DFD6;
+}
+/*# sourceMappingURL=styles.css.map */
