@@ -13,6 +13,7 @@ const PlayerCard = (props) => {
     const [playerStatus, setPlayerStatus] = useState("No data available");
     const [playerRealTimeInGame, setPlayerRealTimeInGame] = useState("No data available");
     const [playerRank, setPlayerRank] = useState("");
+    const [playerArenas, setPlayerArenas] = useState("");
     const [playerLegend, setPlayerLegend] = useState("");
 
     const [totalStats, setTotalStats] = useState([]);
@@ -28,6 +29,7 @@ const PlayerCard = (props) => {
             setPlayerName(data.global.name);
             setPlayerRealTimeInGame(data.realtime.isInGame);
             setPlayerRank(data.global.rank.rankImg);
+            setPlayerArenas(data.global.arena.rankImg);
             setPlayerLegend(data.legends.selected.ImgAssets.icon);
             setTotalStats(Object.values(data.total));
             // setLegendStats(data.legends.all);
@@ -45,8 +47,11 @@ const PlayerCard = (props) => {
     return (
         <React.Fragment>
             <h1> {playerName} </h1> 
-            <img alt = "rank Badge" style = {{ width: "30%"}} src = {playerRank}/>
-            <img alt = "recent Legend" style = {{ width: "30%"}} src = {playerLegend}/>
+            <div className = "primary-card">
+                <div> <img alt = "arenas Badge" style = {{width: "30%"}} src = {playerArenas} /></div>       
+                <div> <img alt = "rank Badge" style = {{width: "30%"}} src = {playerRank}/></div>
+                <div> <img alt = "recent Legend" style = {{width: "30%"}} src = {playerLegend}/></div>
+            </div>
             <ul>
                 <h2> Online and Match status: </h2>
                 <li> Online status: {playerStatus} </li>
