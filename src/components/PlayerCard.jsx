@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Legends from "./Legends";
 
 //add in a full profile card
 //image of selected legend
@@ -15,7 +16,6 @@ const PlayerCard = (props) => {
     const [playerLegend, setPlayerLegend] = useState("");
 
     const [totalStats, setTotalStats] = useState([]);
-    const [legendStats, setLegendStats] = useState([]);
 
     let data = props.data;
 
@@ -30,9 +30,7 @@ const PlayerCard = (props) => {
             setPlayerRank(data.global.rank.rankImg);
             setPlayerLegend(data.legends.selected.ImgAssets.icon);
             setTotalStats(Object.values(data.total));
-            setLegendStats(Object.values(data.legends.all));
-            
-            console.log(legendStats);
+            // setLegendStats(data.legends.all);
 
             if (data.realtime.isOnline === 1) {
                 setPlayerStatus("Player is online");
@@ -62,6 +60,8 @@ const PlayerCard = (props) => {
                     return <li key = {key}> {stat.name}: {stat.value.toLocaleString("en-us")} </li>
                 })}
             </ul>
+
+            <Legends data = {data}/>
         </React.Fragment>
     )
 }

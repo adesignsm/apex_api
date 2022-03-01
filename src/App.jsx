@@ -3,40 +3,53 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import PlayerCard from "./components/PlayerCard";
+import MapRotation from "./components/MapRotation";
 
 import "./styles.css";
  
 const App = () => {
     const [playerData, setPlayerData] = useState([]);
-    const [userName, setUserName] = useState("");
-    const [platform, setPlatform] = useState("X1");
+    const [mapData, setMapData] = useState([]);
+    const [userName, setUserName] = useState("heyimlifeline");
+    const [platform, setPlatform] = useState("PS4");
     const [showStats, setShowStats] = useState(false);
-    
+    // const [showErrorBox, setShowErrorBox] = useState(false); error handler state
+
     const key = process.env.REACT_APP_APEX;
 
     useEffect(() => {
-        console.log(userName);
-        console.log(platform);
-
         queryData();
-
     }, [userName]);
 
-    const queryData = () => {
+    const queryData = async () => {
 
         try {
-            axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${userName}&auth=${key}`)
+
+            await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${userName}&auth=${key}`)
             .then(res => {
-                const data = res.data;
-                console.log(data);
+
+                let data = res.data;
+                setPlayerData(data);
+                console.log(playerData);
 
                 if (data.global.name === "") return false;
+            })
+        } catch (error) {
+            // setShowErrorBox(true);
+        }
 
-                setPlayerData(data);
+        try {
+            await axios.get(`https://api.mozambiquehe.re/maprotation?version=2&auth=${key}`)
+            .then(res => {
+
+                let data = res.data;
+                setMapData(data);
+                console.log(mapData);
+
             })
         } catch (error) {
 
-            console.error();
+            console.log("error");
         }
     }
 
@@ -45,6 +58,7 @@ const App = () => {
         if (event.key === "Enter") {
 
             setUserName(event.target.value);
+
             console.log(userName);
             console.log(platform);
 
@@ -66,9 +80,10 @@ const App = () => {
                 } else if (event.target.value === "PC") {
                     setPlatform("PC");
                 }
+
                 }}>
-                <option> Xbox </option>
                 <option> PlayStation </option>
+                <option> Xbox </option>
                 <option> PC </option>
             </select>
             <input type = "text" id = "username-input" placeholder = "Search here" onKeyPress = {event => {EditUserName(event)}}/>
@@ -76,6 +91,12 @@ const App = () => {
             <div className = "player-card">
                 {showStats ? <PlayerCard data = {playerData}/> : null}
             </div>
+
+            {/* <div className = "error-box">
+                {showErrorBox ? setErrorView() : null}
+            </div> */}
+
+            <MapRotation data = {mapData}/>
         </div>
     )
 }
