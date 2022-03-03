@@ -1,11 +1,11 @@
-import React,{useEffect} from "react";
+import React,{useEffect, Fragment} from "react";
 
 const MapRotation = ({data}) => {
 
     console.log(data);
 
     return (
-        <div className = "map-rotations">
+        <Fragment>
             <h1> UNRANKED MAP ROTATION </h1>
             <div className = "battle-royale">
                 <h2> Battle Royale</h2>
@@ -48,7 +48,7 @@ const MapRotation = ({data}) => {
                 </ul>
                 <img alt = "current map image" src = {data ? data.arenasRanked.current.asset : undefined} style = {{width: "100%"}}/>
             </div>                 
-        </div>
+        </Fragment>
     )
 }
 

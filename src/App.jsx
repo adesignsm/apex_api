@@ -83,15 +83,8 @@ const App = () => {
             </select>
             <input type = "text" id = "username-input" placeholder = "Search here" onKeyPress = {event => {EditUserName(event)}}/>
 
-            <div className = "player-card">
-                {showStats ? <PlayerCard data = {playerData}/> : null}
-            </div>
-
-            {/* <div className = "error-box">
-                {showErrorBox ? setErrorView() : null}
-            </div> */}
-
-            {mapData.hasOwnProperty("arenas") && <MapRotation data = {mapData}/>}
+            <div className = "player-card">{showStats ? <PlayerCard data = {playerData}/> : null}</div>
+            <div className = "map-rotations">{mapData.hasOwnProperty("arenas") && <MapRotation data = {mapData}/>}</div>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Legends from "./Legends";
 
 //add in a full profile card
@@ -45,7 +45,7 @@ const PlayerCard = (props) => {
     }, [data]);
 
     return (
-        <React.Fragment>
+        <Fragment>
             <h1> {playerName} </h1> 
             <div className = "primary-card">
                 <div> <img alt = "arenas Badge" style = {{width: "30%"}} src = {playerArenas} /></div>       
@@ -67,7 +67,7 @@ const PlayerCard = (props) => {
             </ul>
 
             <Legends data = {data}/>
-        </React.Fragment>
+        </Fragment>
     )
 }
 
