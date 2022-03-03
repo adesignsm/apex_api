@@ -23,8 +23,6 @@ const App = () => {
 
     const queryData = async () => {
 
-        try {
-
             await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${userName}&auth=${key}`)
             .then(res => {
 
@@ -34,11 +32,7 @@ const App = () => {
 
                 if (data.global.name === "") return false;
             })
-        } catch (error) {
-            // setShowErrorBox(true);
-        }
 
-        try {
             await axios.get(`https://api.mozambiquehe.re/maprotation?version=2&auth=${key}`)
             .then(res => {
 
@@ -52,9 +46,6 @@ const App = () => {
                 window.location.reload();
 
             })
-        } catch (error) {
-
-        }
     }
 
     const EditUserName = (event) => {
@@ -100,7 +91,7 @@ const App = () => {
                 {showErrorBox ? setErrorView() : null}
             </div> */}
 
-            <MapRotation data = {mapData}/>
+            {mapData.hasOwnProperty("arenas") && <MapRotation data = {mapData}/>}
         </div>
     )
 }

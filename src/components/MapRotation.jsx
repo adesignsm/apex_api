@@ -1,16 +1,12 @@
-import React from "react";
+import React,{useEffect} from "react";
 
-const MapRotation = (props) => {
+const MapRotation = ({data}) => {
 
-    const data = props.data;
     console.log(data);
 
     return (
         <div className = "map-rotations">
             <h1> UNRANKED MAP ROTATION </h1>
-
-            <br />
-
             <div className = "battle-royale">
                 <h2> Battle Royale</h2>
                 <ul style = {{position: "absolute", color: "#fff"}}>
@@ -30,6 +26,7 @@ const MapRotation = (props) => {
                 <img alt = "current map image" src = {data ? data.arenas.current.asset : undefined} style = {{width: "100%"}}/>
             </div>
 
+            <br />
             <br />
 
             <h1> RANKED MAP ROTATION </h1>
