@@ -94,4 +94,13 @@ body, html {
 .legend-icons {
   width: 30%;
 }
+
+.map-rotations h2 {
+  color: #fff;
+}
+
+.map-rotations li {
+  font-size: 120%;
+  list-style-type: none;
+}
 /*# sourceMappingURL=styles.css.map */

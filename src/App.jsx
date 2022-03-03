@@ -46,10 +46,14 @@ const App = () => {
                 setMapData(data);
                 console.log(mapData);
 
+            }, reason => {
+
+                console.error(reason);
+                window.location.reload();
+
             })
         } catch (error) {
 
-            console.log("error");
         }
     }
 
