@@ -95,6 +95,11 @@ body, html {
   width: 30%;
 }
 
+.map-rotations h1 {
+  text-align: left;
+  padding-left: 10px;
+}
+
 .map-rotations h2 {
   color: #fff;
 }
@@ -110,5 +115,17 @@ body, html {
   background-color: rgba(0, 0, 0, 0.6);
   padding-left: 10px;
   margin-bottom: 1px;
+}
+
+.server-status {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.server-status h1 {
+  color: #fff;
+  text-align: left;
+  font-size: 200%;
+  background-color: transparent;
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=styles.css.map */

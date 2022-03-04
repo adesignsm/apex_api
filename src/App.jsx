@@ -4,12 +4,14 @@ import axios from "axios";
 
 import PlayerCard from "./components/PlayerCard";
 import MapRotation from "./components/MapRotation";
+import ServerStatus from "./components/ServerStatus";
 
 import "./styles.css";
  
 const App = () => {
     const [playerData, setPlayerData] = useState([]);
     const [mapData, setMapData] = useState([]);
+    const [serverData, setServerData] = useState([]);
     const [userName, setUserName] = useState("heyimlifeline");
     const [platform, setPlatform] = useState("PS4");
     const [showStats, setShowStats] = useState(false);
@@ -23,28 +25,35 @@ const App = () => {
 
     const queryData = async () => {
 
-            await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${userName}&auth=${key}`)
+        await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${userName}&auth=${key}`)
             .then(res => {
 
                 let data = res.data;
                 setPlayerData(data);
-                console.log(playerData);
 
                 if (data.global.name === "") return false;
+            }, reason => {
+                console.error(reason);
             })
 
-            await axios.get(`https://api.mozambiquehe.re/maprotation?version=2&auth=${key}`)
+        await axios.get(`https://api.mozambiquehe.re/maprotation?version=2&auth=${key}`)
             .then(res => {
 
                 let data = res.data;
                 setMapData(data);
-                console.log(mapData);
 
             }, reason => {
-
                 console.error(reason);
                 window.location.reload();
 
+            })
+
+        await axios.get(`https://api.mozambiquehe.re/servers?auth=${key}`)
+            .then(res => {
+
+                let data = res.data;
+                setServerData(data);
+                console.log(serverData);
             })
     }
 
@@ -85,6 +94,7 @@ const App = () => {
 
             <div className = "player-card">{showStats ? <PlayerCard data = {playerData}/> : null}</div>
             <div className = "map-rotations">{mapData.hasOwnProperty("arenas") && <MapRotation data = {mapData}/>}</div>
+            <div className = "server-status"> <ServerStatus data = {serverData}/> </div>
         </div>
     )
 }

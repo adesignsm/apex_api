@@ -4,6 +4,7 @@ const Legends = (props) => {
 
     const [legendStats, setLegendStats] = useState([]);
     const [legendImageURLS, setLegndImageURLS] = useState([]);
+    
     let data = props.data;
     let legendArray = [];
 
